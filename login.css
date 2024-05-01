@@ -1,0 +1,51 @@
+body {
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+    width: 500px;
+}
+
+#shoe-icon {
+    width: 70px;
+}
+
+#email {
+    width: 500px;
+    height: 60px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+#pword {
+    width: 500px;
+    height: 60px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+#a1 {
+    color: black;
+}
+
+#terms-msg{
+    margin-top: 30px;
+}
+
+#con-btn {
+    color: white;
+    background-color: black;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 15px;
+    margin-top: 30px;
+}
+
+#con-btn:hover {
+    background-color: grey;
+}
