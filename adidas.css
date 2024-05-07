@@ -1,0 +1,57 @@
+body {
+    margin: 0;
+    font-family: "Bungee", sans-serif;
+}
+
+#hero {
+    background-image: url(images/fachry-zella-devandra-bNSdIkCBJOs-unsplash.jpg);
+    height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.hero-text {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #d5dbe0;
+    font-size: 40px;  
+    text-shadow: 5px 5px 12px black;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-around;
+    background-color: #dad7cd
+}
+
+.container {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    width: 300px;
+    height: 700px;
+    border: 5px solid black;
+    border-radius: 20px;
+    margin-top: 80px;
+    margin-bottom: 40px;
+}
+
+.container-img {
+    height: 350px;
+    width: 300px;
+    object-fit: cover;
+    border-bottom: 2px solid black;
+}
+
+.buy-btn {
+    width: 100px;
+    margin: 10px auto 0px auto;
+    padding: 5px 10px;
+    border: 1px solid black;
+    border-radius: 20px;
+}
