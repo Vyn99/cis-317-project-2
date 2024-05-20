@@ -103,10 +103,24 @@ body {
     text-shadow: 5px 5px 12px black;
 }
 
+a {
+
+    text-decoration: none;
+    color:#fff;
+    text-shadow: 5px 5px 12px black;
+
+}
+
+a:hover {
+
+    color: #c9ada7;
+
+}
+/*
 .center:hover {
     color: #c9ada7;
 }
-
+*/
 
 /*
 .btn {
