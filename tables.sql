@@ -15,8 +15,6 @@ INSERT INTO nike VALUES("Jordan Four", 160.00);
 INSERT INTO nike VALUES("Nike Dunk Low", 115.00);
 INSERT INTO nike VALUES("Nike Air Max One", 140.00);
 
-SELECT * FROM nike;
-
 CREATE TABLE new_balance(
     Shoes varChar(50),
     Price float(5)
@@ -28,8 +26,6 @@ INSERT INTO new_balance VALUES("New Balance 574 Core", 89.99);
 INSERT INTO new_balance VALUES("New Balance 993", 199.99);
 INSERT INTO new_balance VALUES("New Balance 1906", 154.99);
 INSERT INTO new_balance VALUES("New Balance 928", 154.99);
-
-SELECT * FROM new_balance;
 
 CREATE TABLE adidas(
     Shoes varChar(50),
@@ -43,8 +39,6 @@ INSERT INTO adidas VALUES("Adidas Ultraboost One Shoes", 190.00);
 INSERT INTO adidas VALUES("Adidas Superstar Shoes", 80.00);
 INSERT INTO adidas VALUES("Adidas Ozweego Shoes", 100.00);
 
-SELECT * FROM adidas;
-
 CREATE TABLE puma(
     Shoes varChar(50),
     Price float(5)
@@ -57,8 +51,6 @@ INSERT INTO puma VALUES("Puma Palmero Shoes", 110.00);
 INSERT INTO puma VALUES("Puma Mercedes AMG Petronas Shoes", 110.00);
 INSERT INTO puma VALUES("Puma Dazed and Confused Shoes", 90.00);
 
-SELECT * FROM puma;
-
 CREATE TABLE reebok(
     Shoes varChar(50),
     Price float(5)
@@ -70,5 +62,3 @@ INSERT INTO reebok VALUES("Reebok X Anine Bing Shoes", 220.00);
 INSERT INTO reebok VALUES("Reebok Club C 85 Shoes", 75.00);
 INSERT INTO reebok VALUES("Reebok Vintage 1983 Shoes", 100.00);
 INSERT INTO reebok VALUES("Reebok Court Victory Shoes", 160.00);
-
-SELECT * FROM reebok;
