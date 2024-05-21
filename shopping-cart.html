@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="shopping-cart.css">
+    <title>Shopping Cart</title>
+</head>
+<body>
+    <div class="cartTab hidden" id="cartTab">
+        <h1>Shopping Cart</h1>
+        <div class="listCart" id="cartItems"></div>
+        <div class="btn">
+            <button class="close" onclick="toggleCart()">CLOSE</button>
+            <button class="checkOut">
+                <a href="login.html" style="text-decoration: none; color: inherit;">Check Out</a>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function toggleCart() {
+            const cartTab = document.getElementById('cartTab');
+            cartTab.classList.toggle('hidden');
+        }
+
+        function addToCart(productName, price) {
+            const cartItems = document.getElementById('cartItems');
+            let existingItem = document.querySelector(`.item[data-product="${productName}"]`);
+            
+            if (existingItem) {
+                const quantityElement = existingItem.querySelector('.quantity span:nth-child(2)');
+                let currentQuantity = parseInt(quantityElement.textContent);
+                currentQuantity++;
+                quantityElement.textContent = currentQuantity;
+            } else {
+                const item = document.createElement('div');
+                item.classList.add('item');
+                item.setAttribute('data-product', productName);
+                item.innerHTML = `
+                    <div class="image">
+                        <img src="images/${productName.replace(/\s+/g, '-').toLowerCase()}.jpg" alt="${productName}">
+                    </div>
+                    <div class="name">${productName}</div>
+                    <div class="totalPrice">$${price.toFixed(2)}</div>
+                    <div class="quantity">
+                        <span class="minus">-</span>
+                        <span>1</span>
+                        <span class="plus">+</span>
+                    </div>
+                `;
+                cartItems.appendChild(item);
+
+                // Add event listeners for quantity buttons
+                item.querySelector('.minus').addEventListener('click', () => updateQuantity(productName, -1));
+                item.querySelector('.plus').addEventListener('click', () => updateQuantity(productName, 1));
+            }
+        }
+
+        function updateQuantity(productName, change) {
+            const item = document.querySelector(`.item[data-product="${productName}"]`);
+            const quantityElement = item.querySelector('.quantity span:nth-child(2)');
+            let currentQuantity = parseInt(quantityElement.textContent);
+
+            if (currentQuantity + change > 0) {
+                quantityElement.textContent = currentQuantity + change;
+            }
+        }
+    </script>
+</body>
+</html>
