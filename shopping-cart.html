@@ -64,6 +64,8 @@
 
             if (currentQuantity + change > 0) {
                 quantityElement.textContent = currentQuantity + change;
+            } else {
+                item.remove();
             }
         }
     </script>
