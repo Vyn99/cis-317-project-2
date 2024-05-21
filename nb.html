@@ -19,9 +19,16 @@
             <li><a href="#">Category</a></li>
             <li><a href="#">Brands</a></li>
         </ul>
-    </nav>
-        
+            <div class="icon-cart" onclick="toggleCart()">
+                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"/>
+                </svg>
+                <span>0</span>
+            </div>
+        </nav>
+
     <body>
+        
         <div id="hero">
             <div class="hero-text">
                 <h1 id="nike-txt">New Balance</h1>
@@ -30,57 +37,67 @@
         
         <div class="flex-container">
             <div class="container">
-                <img class="container-img"
-                src="images/m990gl6_nb_02_i.jpg" alt="new balacne 990 shoes">
+                <img class="container-img" src="images/m990gl6_nb_02_i.jpg" alt="new balance 990 shoes">
                 <h3>990 v6</h3>
                 <p>Price: $199.99</p>
                 <p>In stock: Yes</p>
-                <button class="buy-btn">Buy</button>
+                <button class="buy-btn" onclick="addToCart('990 v6', 199.99)">Buy</button>
             </div>
             <div class="container">
-                <img class="container-img"
-                src="images/m860k14_nb_02_i.jpg" alt="new balance 860 shoes">
+                <img class="container-img" src="images/m860k14_nb_02_i.jpg" alt="new balance 860 shoes">
                 <h3>860 v14</h3>
-                <p>139.99</p>
+                <p>Price: $139.99</p>
                 <p>In stock: Yes</p>
-                <button class="buy-btn">Buy</button>
+                <button class="buy-btn" onclick="addToCart('860 v14', 139.99)">Buy</button>
             </div>
             <div class="container">
-                <img class="container-img"
-                src="images/ml574evg_nb_02_i.jpg" alt="new balance 574 core shoes">
+                <img class="container-img" src="images/ml574evg_nb_02_i.jpg" alt="new balance 574 core shoes">
                 <h3>574 Core</h3>
-                <p>89.99</p>
+                <p>Price: $89.99</p>
                 <p>In stock: Yes</p>
-                <button class="buy-btn">Buy</button>
+                <button class="buy-btn" onclick="addToCart('574 Core', 89.99)">Buy</button>
             </div>
         </div>
-
+    
         <div class="flex-container">
             <div class="container">
-                <img class="container-img"
-                src="images/mr993gl_nb_02_i.jpg" alt="new balance 993 shoes">
+                <img class="container-img" src="images/mr993gl_nb_02_i.jpg" alt="new balance 993 shoes">
                 <h3>993 Core</h3>
-                <p>199.99</p>
+                <p>Price: $199.99</p>
                 <p>In stock: Yes</p>
-                <button class="buy-btn">Buy</button>
+                <button class="buy-btn" onclick="addToCart('993 Core', 199.99)">Buy</button>
             </div>
             <div class="container">
-                <img class="container-img"
-                src="images/m1906ra_nb_02_i.jpg" alt="new balance 1906 shoes">
+                <img class="container-img" src="images/m1906ra_nb_02_i.jpg" alt="new balance 1906 shoes">
                 <h3>1906R</h3>
-                <p>154.99</p>
+                <p>Price: $154.99</p>
                 <p>In stock: Yes</p>
-                <button class="buy-btn">Buy</button>
+                <button class="buy-btn" onclick="addToCart('1906R', 154.99)">Buy</button>
             </div>
             <div class="container">
-                <img class="container-img"
-                src="images/mw928bk3_nb_02_i.jpg" alt="new blance 928 shoes">
+                <img class="container-img" src="images/mw928bk3_nb_02_i.jpg" alt="new balance 928 shoes">
                 <h3>928 v3</h3>
-                <p>154.99</p>
+                <p>Price: $154.99</p>
                 <p>In stock: Yes</p>
-                <button class="buy-btn">Buy</button>
+                <button class="buy-btn" onclick="addToCart('928 v3', 154.99)">Buy</button>
             </div>
         </div>
+    
+        <div id="shopping-cart"></div>
+    
+        <script>
+            fetch('shopping-cart.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('shopping-cart').innerHTML = data;
+                    // Move the script tag to the document body after loading
+                    const script = document.createElement('script');
+                    script.innerHTML = data.match(/<script>([\s\S]*?)<\/script>/)[1];
+                    document.body.appendChild(script);
+                });
+        </script>
+
     </body>
 
     </html>
+    

@@ -19,6 +19,12 @@
             <li><a href="#">Category</a></li>
             <li><a href="#">Brands</a></li>
         </ul>
+        <div class="icon-cart" onclick="toggleCart()">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"/>
+            </svg>
+            <span>0</span>
+        </div>
     </nav>
         
     <body>
@@ -30,57 +36,64 @@
         
         <div class="flex-container">
             <div class="container">
-                <img class="container-img"
-                src="images/100000317_SLC_eCom-tif.jpg" alt="reebok club c 85 shoes">
+                <img class="container-img" src="images/100000317_SLC_eCom-tif.jpg" alt="reebok club c 85 shoes">
                 <h3>Club C 85</h3>
                 <p>Price: $90.00</p>
                 <p>In stock: Yes</p>
-                <button class="buy-btn">Buy</button>
+                <button class="buy-btn" onclick="addToCart('Club C 85', 90)">Buy</button>
             </div>
             <div class="container">
-                <img class="container-img"
-                src="images/100202789_SLC_eCom-tif.jpg" alt="reebok 94 dynamic shoes">
+                <img class="container-img" src="images/100202789_SLC_eCom-tif.jpg" alt="reebok 94 dynamic shoes">
                 <h3>94 Dynamic</h3>
-                <p>130.00</p>
+                <p>Price: $130.00</p>
                 <p>In stock: Yes</p>
-                <button class="buy-btn">Buy</button>
+                <button class="buy-btn" onclick="addToCart('94 Dynamic', 130)">Buy</button>
             </div>
             <div class="container">
-                <img class="container-img"
-                src="images/100200480_SLC_eCom-tif.webp" alt="reebok X anine bing shoes">
+                <img class="container-img" src="images/100200480_SLC_eCom-tif.webp" alt="reebok X anine bing shoes">
                 <h3>X Anine Bing</h3>
-                <p>220.00</p>
+                <p>Price: $220.00</p>
                 <p>In stock: Yes</p>
-                <button class="buy-btn">Buy</button>
+                <button class="buy-btn" onclick="addToCart('X Anine Bing', 220)">Buy</button>
             </div>
         </div>
-
+    
         <div class="flex-container">
             <div class="container">
-                <img class="container-img"
-                src="images/100000158_SLC_eCom-tif.jpg" alt="reebok club c 85 shoes">
+                <img class="container-img" src="images/100000158_SLC_eCom-tif.jpg" alt="reebok club c 85 shoes">
                 <h3>Club C 85</h3>
-                <p>75.00</p>
+                <p>Price: $75.00</p>
                 <p>In stock: Yes</p>
-                <button class="buy-btn">Buy</button>
+                <button class="buy-btn" onclick="addToCart('Club C 85', 75)">Buy</button>
             </div>
             <div class="container">
-                <img class="container-img"
-                src="images/100074340_SLC_eCom-tif.jpg" alt="reebok vintage 1983 shoes">
+                <img class="container-img" src="images/100074340_SLC_eCom-tif.jpg" alt="reebok vintage 1983 shoes">
                 <h3>Vintage 1983</h3>
-                <p>100.00</p>
+                <p>Price: $100.00</p>
                 <p>In stock: Yes</p>
-                <button class="buy-btn">Buy</button>
+                <button class="buy-btn" onclick="addToCart('Vintage 1983', 100)">Buy</button>
             </div>
             <div class="container">
-                <img class="container-img"
-                src="images/100203282_SLC_eCom-tif.jpg" alt="reebok court victory shoes">
+                <img class="container-img" src="images/100203282_SLC_eCom-tif.jpg" alt="reebok court victory shoes">
                 <h3>Court Victory</h3>
-                <p>160.00</p>
+                <p>Price: $160.00</p>
                 <p>In stock: Yes</p>
-                <button class="buy-btn">Buy</button>
+                <button class="buy-btn" onclick="addToCart('Court Victory', 160)">Buy</button>
             </div>
         </div>
-    </body>
-
-    </html>
+    
+        <div id="shopping-cart"></div>
+    
+        <script>
+            fetch('shopping-cart.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('shopping-cart').innerHTML = data;
+                    // Move the script tag to the document body after loading
+                    const script = document.createElement('script');
+                    script.innerHTML = data.match(/<script>([\s\S]*?)<\/script>/)[1];
+                    document.body.appendChild(script);
+                });
+        </script>
+</body>
+</html>

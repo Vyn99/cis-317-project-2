@@ -19,9 +19,17 @@
             <li><a href="#">Category</a></li>
             <li><a href="#">Brands</a></li>
         </ul>
+        <div class="icon-cart" onclick="toggleCart()">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"/>
+            </svg>
+            <span>0</span>
+        </div>
+        
     </nav>
         
     <body>
+
         <div id="hero">
             <div class="hero-text">
                 <h1 id="nike-txt">Puma</h1>
@@ -35,53 +43,67 @@
                 <h3>X Playstation</h3>
                 <p>Price: $120.00</p>
                 <p>In stock: Yes</p>
-                <button class="buy-btn">Buy</button>
+                <button class="buy-btn" onclick="addToCart('X Playstation', 120)">Buy</button>
             </div>
             <div class="container">
                 <img class="container-img"
                 src="images/PUMA-x-PLAYSTATION®-RS-X-Men's-Sneakers1.jpg" alt="puma playstation RS">
                 <h3>RS Playstation</h3>
-                <p>120.00</p>
+                <p>Price: $120.00</p>
                 <p>In stock: Yes</p>
-                <button class="buy-btn">Buy</button>
+                <button class="buy-btn" onclick="addToCart('RS Playstation', 120)">Buy</button>
             </div>
             <div class="container">
                 <img class="container-img"
                 src="images/FENTY-x-PUMA-Creeper-Phatty-Earth-Tone-Men's-Sneakers.jpg" alt="puma creeper shoes">
                 <h3>Creeper</h3>
-                <p>140.00</p>
+                <p>Price: $140.00</p>
                 <p>In stock: Yes</p>
-                <button class="buy-btn">Buy</button>
+                <button class="buy-btn" onclick="addToCart('Creeper', 140)">Buy</button>
             </div>
         </div>
-
+    
         <div class="flex-container">
             <div class="container">
                 <img class="container-img"
                 src="images/Palermo-Basketball-Nostalgia-Sneakers.jpg" alt="puma palmero shoes">
                 <h3>Palmero</h3>
-                <p>110.00</p>
+                <p>Price: $110.00</p>
                 <p>In stock: Yes</p>
-                <button class="buy-btn">Buy</button>
+                <button class="buy-btn" onclick="addToCart('Palmero', 110)">Buy</button>
             </div>
             <div class="container">
                 <img class="container-img"
                 src="images/Mercedes-AMG-Petronas-F1®-Team-x-Mad-Dog-Jones-Spirex-Running-Sneakers.jpg" 
                 alt="puma mercedes amg petronas shoes">
                 <h3>Mercedes AMG Petronas</h3>
-                <p>110.00</p>
+                <p>Price: $110.00</p>
                 <p>In stock: Yes</p>
-                <button class="buy-btn">Buy</button>
+                <button class="buy-btn" onclick="addToCart('Mercedes AMG Petronas', 110)">Buy</button>
             </div>
             <div class="container">
                 <img class="container-img"
                 src="images/PUMA-x-DAZED-AND-CONFUSED-Suede-Sneakers.jpg" alt="puma dazed and confused">
                 <h3>Dazed and Confused</h3>
-                <p>90.00</p>
+                <p>Price: $90.00</p>
                 <p>In stock: Yes</p>
-                <button class="buy-btn">Buy</button>
+                <button class="buy-btn" onclick="addToCart('Dazed and Confused', 90)">Buy</button>
             </div>
         </div>
+    
+        <div id="shopping-cart"></div>
+    
+        <script>
+            fetch('shopping-cart.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('shopping-cart').innerHTML = data;
+                    // Move the script tag to the document body after loading
+                    const script = document.createElement('script');
+                    script.innerHTML = data.match(/<script>([\s\S]*?)<\/script>/)[1];
+                    document.body.appendChild(script);
+                });
+        </script>
     </body>
 
     </html>
