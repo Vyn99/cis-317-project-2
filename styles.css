@@ -52,6 +52,8 @@ nav:hover ul:hover li:hover a:hover{
     cursor: pointer;
     display: flex;
     align-items: center;
+    cursor: pointer; /* Set cursor to pointer when hovering */
+
 }
 
 .icon-cart svg {
