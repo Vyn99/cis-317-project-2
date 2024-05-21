@@ -45,6 +45,25 @@ nav:hover ul:hover li:hover a:hover{
 
 }
 
+.icon-cart {
+    position: absolute;
+    top: 15px; /* Adjusted from 10px to 15px */
+    right: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.icon-cart svg {
+}
+
+.icon-cart span {
+    color: #fff;
+    margin-left: 8px;
+    font-size: 16px;
+}
+
+
 /********************BODY****************************************/
 body {
     margin: 0;
