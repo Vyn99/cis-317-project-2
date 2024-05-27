@@ -7,26 +7,28 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="signup.css">
-    <title>Login</title>
+    <title>Create Account</title>
 </head>
 <body>
     <nav>
         <a href="./index.html" class="back-btn">&larr; Back</a>
     </nav>
     <img id="shoe-icon" src="images/running-shoes-sneakers-sport-shoes-run-shoe-icon-black-color-illustration-flat-style-image-vector.jpg" alt="Shoe Icon">
-    <h2>Enter your email and password to Sign in.</h2>
+    <h2>Create your account</h2>
     <form id="MainForm" action="/signup" method="POST">
         <input type="email" name="email" id="emailInp" placeholder="Email" required>
         <input type="password" name="password" id="pwordInp" placeholder="Password" required>
+        <input type="text" name="password" id="fnameInp" placeholder="First Name" required>
+        <input type="text" name="password" id="lnameInp" placeholder="Last Name" required>
         <p id="terms-msg">By signing up, I agree to the <a href="#" id="a1">Privacy Policy and Terms of Use.</a></p>
-        <button type="submit" id="signup-btn">Login</button>
-        <a href="signup.html"><button type="button" id="signup-btn">Create User</button></a>
+        <button type="submit" id="signup-btn">Sign Up</button>
+        <a href="login.html"><button type="button" id="signup-btn">Login In</button></a>
     </form>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
-        import { getDatabase, get, ref, child } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-database.js";
-        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-auth.js";
+        import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-database.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-auth.js";
 
         const firebaseConfig = {
           apiKey: "AIzaSyABlsF-bBqV2Zrn9VEzymfYUd7GX15TKDQ",
@@ -41,26 +43,21 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase();
         const auth = getAuth(app);
-        const dbref = ref(db);
-
+        
         let EmailInp = document.getElementById('emailInp');
         let PassInp = document.getElementById('pwordInp');
+        let FnameInp = document.getElementById('fnameInp');
+        let LnameInp = document.getElementById('lnameInp');
         let MainForm = document.getElementById('MainForm');
 
-        let SignInUser = evt => {
+        let RegisterUser = evt => {
             evt.preventDefault();
 
-            signInWithEmailAndPassword(auth, EmailInp.value, PassInp.value)
+            createUserWithEmailAndPassword(auth, EmailInp.value, PassInp.value)
             .then((credentials)=>{
-                get(child(dbref, 'UsersAuthList/' + credentials.user.uid)).then((snapshot)=>{
-                    if(snapshot.exists){
-                        sessionStorage.setItem("user-info", JSON.stringify({
-                            firstname: snapshot.val().firstname,
-                            lastname: snapshot.val().lastname
-                        }))
-                        sessionStorage.setItem("user-creds", JSON.stringify(credentials.user));
-                        window.location.href = 'index.html';
-                    }
+                set(ref(db, 'UsersAuthList/' + credentials.user.uid),{
+                    firstname: FnameInp.value,
+                    lastname: LnameInp.value
                 })
 
             })
@@ -71,8 +68,9 @@
             })
         }
 
-        MainForm.addEventListener('submit', SignInUser);
+        MainForm.addEventListener('submit', RegisterUser);
 
       </script>
 </body>
 </html>
+

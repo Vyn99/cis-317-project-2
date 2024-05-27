@@ -50,7 +50,6 @@ nav:hover ul:hover li:hover a:hover {
     text-transform: uppercase;
 }
 
-
 body {
     display: flex;
     margin: 0 auto;
@@ -64,7 +63,7 @@ body {
     width: 70px;
 }
 
-#email {
+#email, #pword, #confirm-pword {
     width: 500px;
     height: 60px;
     border: 1px solid black;
@@ -72,23 +71,16 @@ body {
     margin-top: 30px;
 }
 
-#pword {
-    width: 500px;
-    height: 60px;
-    border: 1px solid black;
-    border-radius: 10px;
+#terms-msg {
     margin-top: 30px;
 }
 
-#a1 {
-    color: black;
+#terms-msg a {
+    color: black; 
 }
 
-#terms-msg{
-    margin-top: 30px;
-}
-
-#con-btn {
+#signup-btn {
+    color: white;
     background-color: black;
     border: none;
     border-radius: 30px;
@@ -98,11 +90,11 @@ body {
     margin-top: 30px;
 }
 
-#con-btn a {
+#signup-btn a {
     color: white;
     text-decoration: none; /* Ensure no underline */
 }
 
-#con-btn:hover {
+#signup-btn:hover {
     background-color: grey;
 }
